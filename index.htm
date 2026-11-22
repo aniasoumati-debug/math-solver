@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#130b24">
+
+  <title>Math Solver ✨</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Mathematics libraries -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.2/math.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.bundle-for-browser.min.js"></script>
+
+  <!-- JavaScript -->
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+
+      <a class="logo" href="#" aria-label="Math Solver home">
+        <span class="logo-symbol">𝒙²</span>
+        <span class="logo-name">Math Solver</span>
+        <span class="logo-sparkle">✦</span>
+      </a>
+
+      <div class="language-box">
+        <label for="language" class="visually-hidden">اختيار اللغة</label>
+
+        <select id="language">
+          <option value="ar" selected>العربية 🇩🇿</option>
+          <option value="en">English 🇬🇧</option>
+          <option value="ko">한국어 🇰🇷</option>
+        </select>
+      </div>
+
+    </header>
+
+    <!-- Main -->
+    <main>
+
+      <!-- Welcome -->
+      <section class="hero">
+
+        <div class="hero-icon">✧</div>
+
+        <p class="hero-label" id="heroLabel">
+          مرحبًا بك في عالم الرياضيات
+        </p>
+
+        <h1 id="title">
+          Math solver 💜
+        </h1>
+
+        <p id="subtitle">
+          اجعل حل المسائل الرياضية أسهل وأسرع ✨
+        </p>
+
+      </section>
+
+      <!-- Calculator -->
+      <section class="solver" aria-label="Math solver">
+
+        <!-- Mode selection -->
+        <div class="tabs">
+
+          <button
+            type="button"
+            id="equationTab"
+            class="tab active"
+            aria-pressed="true"
+            onclick="setMode('equation')"
+          >
+            <span class="tab-icon">𝒙²</span>
+            <span id="equationText">حل معادلة</span>
+          </button>
+
+          <button
+            type="button"
+            id="integralTab"
+            class="tab"
+            aria-pressed="false"
+            onclick="setMode('integral')"
+          >
+            <span class="tab-icon">∫</span>
+            <span id="integralText">حل تكامل</span>
+          </button>
+
+        </div>
+
+        <!-- Input -->
+        <div class="input-section">
+
+          <label id="problemLabel" for="problem">
+            أدخل المسألة الرياضية
+          </label>
+
+          <input
+            type="text"
+            id="problem"
+            placeholder="مثال: x^2 - 5*x + 6 = 0"
+            dir="ltr"
+            autocomplete="off"
+            spellcheck="false"
+          >
+
+          <p class="input-hint" id="inputHint">
+            استخدم x للمتغير الرياضي
+          </p>
+
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+
+          <button
+            type="button"
+            id="solveBtn"
+            class="solve-button"
+            onclick="solveProblem()"
+          >
+            حل المسألة ✨
+          </button>
+
+          <button
+            type="button"
+            id="clearBtn"
+            class="clear-button"
+            onclick="clearProblem()"
+          >
+            مسح
+          </button>
+
+        </div>
+
+        <!-- Examples -->
+        <section class="examples">
+
+          <div class="section-heading">
+            <span class="heading-icon">✧</span>
+            <h2 id="examplesTitle">أمثلة للتجربة</h2>
+          </div>
+
+          <div id="examplesList" class="examples-list">
+          </div>
+
+        </section>
+
+        <!-- Solution -->
+        <section class="result" aria-live="polite">
+
+          <div class="section-heading">
+            <span class="heading-icon">✦</span>
+            <h2 id="resultTitle">الحل والشرح</h2>
+          </div>
+
+          <div id="solution" class="solution">
+            <div class="empty-state">
+              <span class="empty-icon">∑</span>
+              <p id="waitingText">
+                سيظهر الحل هنا بعد إدخال المسألة.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- History -->
+        <section class="history">
+
+          <div class="history-header">
+
+            <div class="section-heading">
+              <span class="heading-icon">◷</span>
+              <h2 id="historyTitle">سجل العمليات</h2>
+            </div>
+
+            <button
+              type="button"
+              id="historyClear"
+              class="history-clear"
+              onclick="clearHistory()"
+            >
+              مسح السجل
+            </button>
+
+          </div>
+
+          <ul id="historyList" class="history-list">
+          </ul>
+
+        </section>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+      <div class="footer-logo">𝒙² Math Solver ✨</div>
+
+      <p id="footerText">
+        صُنع بشغف من أجل عشاق الرياضيات 💜
+      </p>
+
+      <p class="copyright">
+        © 2026 Math Solver
+      </p>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>
